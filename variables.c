@@ -12,7 +12,7 @@ int is_chn(info_b *info, char *bf, size_t *position)
 {
 	size_t i = *position;
 
-	if (buf[i] == '|' && bf[i + 1] == '|')
+	if (bf[i] == '|' && bf[i + 1] == '|')
 	{
 		bf[i] = 0;
 		i++;
@@ -39,7 +39,7 @@ int is_chn(info_b *info, char *bf, size_t *position)
  * chk_chn - this will check whether we should continue chaining based on last status
  * @info: parameter struct
  * @bf: char buffer
- * @position: this is the location of current position in buf
+ * @position: this is the location of current position in bf
  * @j: the starting position in bf
  * @bf_length: the length of bf
  *
@@ -53,7 +53,7 @@ void chk_chn(info_b *info, char *bf, size_t *position, size_t j, size_t bf_lengt
 	{
 		if (info->status)
 		{
-			buf[j] = 0;
+			bf[j] = 0;
 			i = bf_length;
 		}
 	}
@@ -61,7 +61,7 @@ void chk_chn(info_b *info, char *bf, size_t *position, size_t j, size_t bf_lengt
 	{
 		if (!info->status)
 		{
-			buf[j] = 0;
+			bf[j] = 0;
 			i = bf_length;
 		}
 	}
